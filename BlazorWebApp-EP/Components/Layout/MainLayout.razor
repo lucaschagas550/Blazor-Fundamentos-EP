@@ -6,9 +6,31 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+        <!-- Final do curso criar um componente chamado header para esta parte -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand"></a>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="Images/123-erza.jpg" alt="Profile" title="About" class="round-image">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="https://learn.microsoft.com/aspnet/core/">
+                                <i class="fa-solid fa-user me-2"></i>
+                                Minha Conta
+                            </a>
+                        </li>
+                        <hr class="dropdown-divider">
+                        <li>
+                            <a class="dropdown-item" href="#logout">
+                                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <article class="content px-4">
             @Body

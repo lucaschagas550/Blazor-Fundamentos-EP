@@ -1,0 +1,14 @@
+﻿@rendermode InteractiveServer
+<!-- Ao clicar no botao acontece interacoes com servidor pelo websocket sem ter necessidade de JS -->
+
+<h2>Interactive Server (interactive SSR)</h2>
+<button class="btn btn-primary" @onclick="ProcessaCliqueServer">Clica Aqui!</button> @message
+
+@code {
+    private string message = "Não clicou.";
+
+    private void ProcessaCliqueServer()
+    {
+        message = "Agora sim, clicado!!!";
+    }
+}

@@ -9,6 +9,12 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<div class="mt-5">
+    <NavLink class="btn btn-primary" href="counter/menu-marcado-pela-rota">
+        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Menu é marcado pela rota
+    </NavLink>
+</div>
+
 @code {
     private int currentCount = 0;
 

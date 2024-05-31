@@ -1,0 +1,16 @@
+﻿@rendermode InteractiveAuto
+
+<!-- Ao clicar no botao acontece interacoes com servidor apenas a primeira vez, depois que webassembly estiver pronto ele assume o lugar -->
+<!-- Todo componente InteractiveAuto DEVE ficar no projeto webAssembly, que no caso eh o client, este eh um exemplo -->
+
+<h2>Automatic (Auto)</h2>
+<button class="btn btn-primary" @onclick="ProcessaCliqueAuto">Clica Aqui!</button> @message
+
+@code {
+    private string message = "Não clicou.";
+
+    private void ProcessaCliqueAuto()
+    {
+        message = "Agora sim, clicado!!!";
+    }
+}
