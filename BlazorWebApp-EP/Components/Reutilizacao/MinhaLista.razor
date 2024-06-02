@@ -31,6 +31,7 @@
 @code {
     private List<string> Tasks = new List<string> { "Comprar leite", "Enviar relatório", "Pagar contas" };
 
+    //OnDelete do TodoItem vai enviar o nome do item, porque ele propaga o evento que vai chamar o Handle
     private void HandleDelete(string item)
     {
         Tasks.Remove(item);

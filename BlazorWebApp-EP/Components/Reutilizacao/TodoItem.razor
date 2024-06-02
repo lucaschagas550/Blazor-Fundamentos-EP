@@ -22,6 +22,7 @@
         IsCompleted = !IsCompleted;
     }
 
+    //Envia o nome do item para o HandleDelete no MinhaLista
     private async Task Delete()
     {
         await OnDelete.InvokeAsync(ItemText);
