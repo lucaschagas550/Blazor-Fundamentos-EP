@@ -1,5 +1,7 @@
 ﻿@page "/weather"
 @attribute [StreamRendering]
+<!-- StreamRendering permite voce personalizar o comportamento da tela enquanto os dados nao volta da api, no caso, fica com Loading... na tela -->
+<!-- Caso tiver um filtro na tela antes de fazer o request deixar o forecasts como null, para voltar a aparecer o loading ..., assim no retorno do request ele some novamente -->
 
 <PageTitle>Weather</PageTitle>
 
