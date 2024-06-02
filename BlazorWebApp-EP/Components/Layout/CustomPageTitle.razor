@@ -1,0 +1,19 @@
+﻿@* @{
+    var tituloCompleto = $"{Titulo} | Minha Primeira App Blazor";
+}
+ *@
+
+<PageTitle>@TituloCompleto</PageTitle>
+
+@code {
+    [Parameter]
+    public string Titulo { get; set; } = string.Empty;
+
+    public string TituloCompleto { get; set; } = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        TituloCompleto = $"{Titulo} | Minha Primeira App Blazor";
+        await Task.CompletedTask;
+    }
+}
