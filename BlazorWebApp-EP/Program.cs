@@ -1,4 +1,6 @@
 using BlazorWebApp_EP.Components;
+using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+//Cascading Value
+//builder.Services.AddCascadingValue(sp =>
+//{
+//    var StyleContext = new StyleContext { BackgroundColor = "#ADD8E6" };
+//    var source = new CascadingValueSource<StyleContext>(StyleContext, isFixed: false);
+//    return source;
+//});
 
 var app = builder.Build();
 
@@ -32,3 +42,17 @@ app.MapRazorComponents<App>()
     .AddAdditionalAssemblies(typeof(BlazorWebApp_EP.Client._Imports).Assembly);
 
 app.Run();
+
+
+//Propagar as alteracoes do cascadingValues para os componentes
+public static class CascadingValueSource
+{
+    public static CascadingValueSource<T> CreateNotifying<T>(T value, bool isFixed = false) where T : INotifyPropertyChanged
+    {
+        var source = new CascadingValueSource<T>(value, isFixed);
+
+        value.PropertyChanged += (sender, args) => source.NotifyChangedAsync();
+
+        return source;
+    }
+}

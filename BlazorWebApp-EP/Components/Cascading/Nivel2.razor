@@ -1,0 +1,10 @@
+﻿@using MinhaPrimeiraApp.Components.Cascading
+<div style="background-color:@StyleContext.BackgroundColor; padding: 10px;">
+    <p>Componente de Nível 2</p>
+    <Nivel3 />
+</div>
+
+@code {
+    [CascadingParameter] //Valor vem do componente que esta o chamando, no caso do pai.
+    public StyleContext StyleContext { get; set; }
+}
