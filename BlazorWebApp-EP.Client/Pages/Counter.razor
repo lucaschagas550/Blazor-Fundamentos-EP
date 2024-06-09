@@ -1,5 +1,6 @@
 ﻿@page "/counter"
 @rendermode InteractiveAuto
+@inject ILocalStorageService LocalStorage
 
 <PageTitle>Counter</PageTitle>
 
@@ -17,6 +18,19 @@
 
 @code {
     private int currentCount = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        Console.WriteLine("Entrou 2");
+        await LocalStorage.SetItemAsync("name2", "Lucas");
+        var name = await LocalStorage.GetItemAsync<string>("name2");
+    }
 
     private void IncrementCount()
     {

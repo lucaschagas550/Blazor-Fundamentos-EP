@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using BlazorWebApp_EP.Components;
 using BlazorWebApp_EP.Components.DI;
 using Microsoft.AspNetCore.Components;
@@ -18,6 +19,7 @@ builder.Services.AddRazorComponents()
 //    return source;
 //});
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
 
