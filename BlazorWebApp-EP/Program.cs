@@ -1,4 +1,5 @@
 using BlazorWebApp_EP.Components;
+using BlazorWebApp_EP.Components.DI;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 
@@ -16,6 +17,7 @@ builder.Services.AddRazorComponents()
 //    var source = new CascadingValueSource<StyleContext>(StyleContext, isFixed: false);
 //    return source;
 //});
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
