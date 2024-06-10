@@ -1,6 +1,7 @@
 using Blazored.LocalStorage;
 using BlazorWebApp_EP.Components;
 using BlazorWebApp_EP.Components.DI;
+using BlazorWebApp_EP.Components.Roteamento.Users;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 
@@ -19,6 +20,7 @@ builder.Services.AddRazorComponents()
 //    return source;
 //});
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
@@ -34,6 +36,9 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+//Redireciona para pagina de erro no arquivo Roteamento/Erros
+app.UseStatusCodePagesWithRedirects("/erro/{0}");
 
 app.UseHttpsRedirection();
 
