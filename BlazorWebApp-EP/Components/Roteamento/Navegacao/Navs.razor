@@ -1,0 +1,52 @@
+﻿@page "/navegacao"
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<!--Se o href foi compativel com a url ele ativa o ActiveClass, por causa do NavLinkMatch.All -->
+<NavLink Match="NavLinkMatch.All" ActiveClass="text-danger" href="navegacao">NavLink</NavLink>
+
+<NavLink ActiveClass="text-danger" href="sample">NavLink</NavLink>
+
+<a href="sample">HTML</a>
+
+<br />
+<br />
+
+<a class="btn btn-danger" @onclick="Clicou">Não Clique Aqui</a>
+
+<br />
+<br />
+
+@cUri
+
+<br />
+
+@cBaseUri
+
+@code {
+
+    string cUri;
+    string cBaseUri;
+
+    protected override void OnInitialized()
+    {
+        cUri = Navigation.Uri;
+        cBaseUri = Navigation.BaseUri;
+
+        //Crie o evento para quando sair da tela
+        Navigation.LocationChanged += HandleLocationChanged;
+    }
+
+    private void Clicou()
+    {
+        //Navegar para outra rota quando o metodo clicou for chamado
+        Navigation.NavigateTo("/sample");
+    }
+
+    //Antes de sair da rota posso fazer alguma coisa na tela
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        Console.WriteLine($"Estamos indo para: {e.Location}");
+    }
+}
