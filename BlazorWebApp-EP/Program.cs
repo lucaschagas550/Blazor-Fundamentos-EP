@@ -2,7 +2,9 @@ using Blazored.LocalStorage;
 using BlazorWebApp_EP.Components;
 using BlazorWebApp_EP.Components.DI;
 using BlazorWebApp_EP.Components.Roteamento.Users;
+using BlazorWebApp_EP.Data;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,12 @@ builder.Services.AddRazorComponents()
 //    var source = new CascadingValueSource<StyleContext>(StyleContext, isFixed: false);
 //    return source;
 //});
+
+
+//Entity framework
+builder.Services.AddDbContext<PrimeiraAppContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PrimeiraAppContext")));
+
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddBlazoredLocalStorage();
@@ -43,7 +51,7 @@ app.UseStatusCodePagesWithRedirects("/erro/{0}");
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-app.UseAntiforgery();
+app.UseAntiforgery(); //AntiForgery para bloquear ataques CSRF
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()

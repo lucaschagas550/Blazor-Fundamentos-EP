@@ -29,6 +29,7 @@
         // Simulate asynchronous loading to demonstrate streaming rendering
         Console.WriteLine("Entrou 2");
         await LocalStorage.SetItemAsync("name2", "Lucas");
+
         var name = await LocalStorage.GetItemAsync<string>("name2");
     }
 

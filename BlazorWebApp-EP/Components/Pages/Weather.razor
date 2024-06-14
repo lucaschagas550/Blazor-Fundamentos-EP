@@ -1,4 +1,5 @@
 ﻿@page "/weather"
+@using BlazorWebApp_EP.Components.Forms
 @attribute [StreamRendering]
 @inject ILocalStorageService LocalStorage
 @rendermode InteractiveServer
@@ -62,7 +63,10 @@ else
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         Console.WriteLine("Entrou");
-        await LocalStorage.SetItemAsync("name", "John Smith");
+        await LocalStorage.SetItemAsync("name", new Produto() { Id = 22 });
+
+        var value = await LocalStorage.GetItemAsync<Produto>("name");
+        Console.WriteLine(value);
         var name = await LocalStorage.GetItemAsync<string>("name");
     }
 
